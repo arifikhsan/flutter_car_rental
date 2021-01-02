@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_car_rental/data/model/car_model.dart';
+import 'package:flutter_car_rental/screen/detail_screen.dart';
 
 class CarItem extends StatelessWidget {
   final CarModel car;
@@ -9,7 +10,16 @@ class CarItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlatButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return DetailScreen(car: car);
+            },
+          ),
+        );
+      },
       padding: EdgeInsets.all(16),
       child: Container(
         child: Column(
