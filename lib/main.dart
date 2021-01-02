@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Car Rental',
+      debugShowMaterialGrid: false,
       theme: ThemeData(
         backgroundColor: Colors.white,
         fontFamily: 'Montserrat',

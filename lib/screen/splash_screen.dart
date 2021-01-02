@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_car_rental/screen/home_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   @override
@@ -79,7 +80,16 @@ class SplashScreen extends StatelessWidget {
                       fontSize: 24,
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return HomeScreen();
+                        },
+                      ),
+                    );
+                  },
                 ),
               ],
             )
