@@ -12,15 +12,47 @@ class SplashScreen extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(32),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.car_rental,
+                          size: 120,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 64),
                     Text(
                       'Need a car?',
-                      style: Theme.of(context).textTheme.headline2,
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline3
+                          .copyWith(color: Theme.of(context).primaryColor),
                     ),
+                    SizedBox(height: 32),
                     Text('Rent it quickly now!'),
-                    Text(
-                        'You can choose your ideal car and book it easily with Castar.'),
+                    SizedBox(height: 8),
+                    RichText(
+                      text: TextSpan(
+                        style: Theme.of(context).textTheme.bodyText1,
+                        children: [
+                          TextSpan(
+                              text:
+                                  'You can choose your ideal car and book it easily with'),
+                          TextSpan(
+                            text: ' Rentalin',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          TextSpan(text: '.'),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -29,14 +61,22 @@ class SplashScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 FlatButton(
-                  color: Colors.green,
+                  color: Colors.indigo,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 32,
+                    vertical: 16,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(16),
+                    ),
+                  ),
                   child: Text(
-                    "Let's go",
+                    "Let's go →",
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w700,
                       color: Colors.white,
-                      fontFamily: 'Montserrat',
-                      fontSize: 48,
+                      fontSize: 24,
                     ),
                   ),
                   onPressed: () {},

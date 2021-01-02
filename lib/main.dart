@@ -11,11 +11,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Car Rental',
       theme: ThemeData(
+        backgroundColor: Colors.white,
         fontFamily: 'Montserrat',
         primarySwatch: Colors.blue,
+        primaryColor: Colors.indigo,
+        accentColor: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         textTheme: TextTheme(
           headline2: TextStyle(fontWeight: FontWeight.bold),
+          headline3: TextStyle(fontWeight: FontWeight.w700),
         ),
       ),
       home: SplashScreen(),
