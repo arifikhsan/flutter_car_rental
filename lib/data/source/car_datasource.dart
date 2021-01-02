@@ -10,7 +10,7 @@ class CarDatasource {
       cars.add(
         CarModel(
           id: i,
-          name: 'Toyota Yaris #$i',
+          name: 'Toyota Yaris $i',
           year: 2020 + i,
           priceValue: 56 + i,
           priceUnit: 'day',
