@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_car_rental/data/model/car_model.dart';
 
 class CarItem extends StatelessWidget {
+  final CarModel car;
+
+  const CarItem({Key key, this.car}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return FlatButton(
@@ -12,7 +17,7 @@ class CarItem extends StatelessWidget {
             AspectRatio(
               aspectRatio: 3 / 2,
               child: Image.network(
-                'https://placekitten.com/400/300',
+                car.imageUrl,
                 fit: BoxFit.cover,
               ),
             ),
@@ -33,13 +38,13 @@ class CarItem extends StatelessWidget {
                           ),
                           children: [
                             TextSpan(
-                              text: "Toyota Avanza",
+                              text: car.name,
                               style: TextStyle(
                                 fontSize: 24,
                               ),
                             ),
                             TextSpan(
-                              text: " 2020",
+                              text: " ${car.year}",
                               style: TextStyle(
                                 fontSize: 18,
                               ),
@@ -51,38 +56,27 @@ class CarItem extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            '4x used',
+                            '${car.used}x used ${car.rateValue}',
                             style: TextStyle(
                               fontSize: 12,
                               color: Colors.grey.shade700,
                             ),
                           ),
                           SizedBox(width: 4),
-                          Icon(
-                            Icons.star,
-                            color: Theme.of(context).primaryColor,
-                            size: 20,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: Theme.of(context).primaryColor,
-                            size: 20,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: Theme.of(context).primaryColor,
-                            size: 20,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: Theme.of(context).primaryColor,
-                            size: 20,
-                          ),
-                          Icon(
-                            Icons.star_border,
-                            color: Theme.of(context).primaryColor,
-                            size: 20,
-                          ),
+                          for (int i = 1; i <= car.rateValue; i++)
+                            Icon(
+                              Icons.star,
+                              color: Theme.of(context).primaryColor,
+                              size: 20,
+                            ),
+                          for (int i = 1;
+                              i <= car.rateFrom - car.rateValue;
+                              i++)
+                            Icon(
+                              Icons.star_outline,
+                              color: Theme.of(context).primaryColor,
+                              size: 20,
+                            ),
                         ],
                       )
                     ],
@@ -106,7 +100,7 @@ class CarItem extends StatelessWidget {
                               ),
                             ),
                             TextSpan(
-                              text: "59",
+                              text: car.priceValue.toString(),
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w800,
@@ -116,7 +110,7 @@ class CarItem extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'per day',
+                        'per ${car.priceUnit}',
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           color: Colors.grey.shade700,
