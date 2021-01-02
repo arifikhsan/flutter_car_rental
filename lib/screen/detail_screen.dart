@@ -326,12 +326,12 @@ class DetailScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Divider(height: 2),
+            SizedBox(height: 16),
             FlatButton(
               minWidth: double.infinity,
               padding: const EdgeInsets.symmetric(
                 horizontal: 16,
-                vertical: 24,
+                vertical: 16,
               ),
               color: Theme.of(context).primaryColor,
               onPressed: () {
