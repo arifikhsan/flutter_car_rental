@@ -66,7 +66,7 @@ class CarItem extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            '${car.used} trips ${car.rateValue}',
+                            '${car.used} trips',
                             style: TextStyle(
                               fontSize: 12,
                               color: Colors.grey.shade700,
