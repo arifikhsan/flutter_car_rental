@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_car_rental/data/model/car_model.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class DetailScreen extends StatelessWidget {
+class DetailScreen extends StatefulWidget {
   final CarModel car;
 
   const DetailScreen({
@@ -11,10 +11,17 @@ class DetailScreen extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  _DetailScreenState createState() => _DetailScreenState();
+}
+
+class _DetailScreenState extends State<DetailScreen> {
+  bool favorite = false;
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(car.name),
+        title: Text(widget.car.name),
         actions: [
           IconButton(
             icon: Icon(Icons.share),
@@ -23,9 +30,14 @@ class DetailScreen extends StatelessWidget {
             },
           ),
           IconButton(
-            icon: Icon(Icons.favorite_border),
+            icon: Icon(favorite ? Icons.favorite : Icons.favorite_border),
             onPressed: () {
-              Fluttertoast.showToast(msg: 'Favorite');
+              this.setState(() {
+                favorite = !favorite;
+              });
+              Fluttertoast.showToast(
+                msg: favorite ? 'Anda suka mobil ini' : 'Sekarang tidak :(',
+              );
             },
           ),
         ],
@@ -38,7 +50,7 @@ class DetailScreen extends StatelessWidget {
               children: [
                 AspectRatio(
                   aspectRatio: 3 / 2,
-                  child: Image.network(car.imageUrl, fit: BoxFit.cover),
+                  child: Image.network(widget.car.imageUrl, fit: BoxFit.cover),
                 ),
                 Positioned(
                   left: 16,
@@ -71,13 +83,13 @@ class DetailScreen extends StatelessWidget {
                             ),
                             children: [
                               TextSpan(
-                                text: car.name,
+                                text: widget.car.name,
                                 style: TextStyle(
                                   fontSize: 24,
                                 ),
                               ),
                               TextSpan(
-                                text: " ${car.year}",
+                                text: " ${widget.car.year}",
                                 style: TextStyle(
                                   fontSize: 18,
                                 ),
@@ -89,21 +101,21 @@ class DetailScreen extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              '${car.used} trips',
+                              '${widget.car.used} trips',
                               style: TextStyle(
                                 fontSize: 12,
                                 color: Colors.grey.shade700,
                               ),
                             ),
                             SizedBox(width: 4),
-                            for (int i = 1; i <= car.rateValue; i++)
+                            for (int i = 1; i <= widget.car.rateValue; i++)
                               Icon(
                                 Icons.star,
                                 color: Theme.of(context).primaryColor,
                                 size: 20,
                               ),
                             for (int i = 1;
-                                i <= car.rateFrom - car.rateValue;
+                                i <= widget.car.rateFrom - widget.car.rateValue;
                                 i++)
                               Icon(
                                 Icons.star_outline,
@@ -133,7 +145,7 @@ class DetailScreen extends StatelessWidget {
                                 ),
                               ),
                               TextSpan(
-                                text: car.priceValue.toString(),
+                                text: widget.car.priceValue.toString(),
                                 style: TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.w800,
@@ -143,7 +155,7 @@ class DetailScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'per ${car.priceUnit}',
+                          'per ${widget.car.priceUnit}',
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.grey.shade700,

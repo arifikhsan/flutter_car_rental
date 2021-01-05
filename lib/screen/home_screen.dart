@@ -4,14 +4,9 @@ import 'package:flutter_car_rental/data/source/car_datasource.dart';
 import 'package:flutter_car_rental/screen/widget/car_item.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   final List<CarModel> cars = CarDatasource().getCars();
 
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,8 +104,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               SizedBox(height: 16),
-              for (int i = 0; i < widget.cars.length; i++)
-                CarItem(car: widget.cars[i]),
+              for (int i = 0; i < cars.length; i++)
+                CarItem(car: cars[i]),
             ],
           ),
         ),
