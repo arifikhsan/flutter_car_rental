@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.favorite_border),
             onPressed: () {
-              Fluttertoast.showToast(msg: 'Favorite');
+              Fluttertoast.showToast(msg: 'Ke halaman favorite');
             },
           ),
           IconButton(
